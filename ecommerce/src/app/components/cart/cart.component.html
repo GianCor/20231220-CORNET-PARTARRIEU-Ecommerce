@@ -1,1 +1,30 @@
-<p>cart works!</p>
+<div class="row">
+    <div class="col-8">
+        <table>
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of list">
+                    <td><img src="{{product.images[0]}}" class="img-thumbnail table-image" alt=""></td>
+                    <td> {{product.title}} </td>
+                    <td> {{product.amount}} </td>
+                    <td> {{product.price}} </td>
+                    <td> {{product.price * product.amount}} </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-4">
+        <div>
+            <p>total: {{total}}</p>
+        </div>
+    </div>
+</div>
