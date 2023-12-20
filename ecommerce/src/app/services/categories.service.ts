@@ -10,7 +10,7 @@ export class CategoriesService {
 
   URL_API= 'https://api.escuelajs.co/api/v1/categories'
   
-  getProductByCategory(id: any):Observable<any>{
+  getProductByCategory(id: number):Observable<any>{
       return this.http.get(`${this.URL_API}/${id}/products`)
   }
 

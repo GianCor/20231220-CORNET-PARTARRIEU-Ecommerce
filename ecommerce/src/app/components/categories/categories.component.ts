@@ -8,25 +8,19 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
-  id: any;
-  arrProducts:any = [];
-  
-  
-  
-  constructor(public categoryService: CategoriesService, private route: ActivatedRoute){}
-  
-  
+  id!: number;
+  arrProducts: any = [];
+
+  constructor(public categoryService: CategoriesService, private route: ActivatedRoute) { }
+
+
   ngOnInit(): void {
-    
-    console.log('hola');
-    
-    this.id = this.route.snapshot.paramMap.get('category');
-    console.log(this.id);
-      
-    this.categoryService.getProductByCategory(this.id).subscribe((e)=>{
-      this.arrProducts = e;
-      console.log(e);
-      
-    })    
+    this.route.paramMap.subscribe(params => {
+      this.id = +params.get('category')!;
+
+      this.categoryService.getProductByCategory(this.id).subscribe((e) => {
+        this.arrProducts = e;
+      }); 
+    });
   }
 }
