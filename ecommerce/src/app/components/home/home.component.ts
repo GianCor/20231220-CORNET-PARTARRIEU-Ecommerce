@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void {
     this.productsService.getProducts().subscribe((e)=>{
       console.log(e)
+      this.arrProducts = e
     })
   }
 }

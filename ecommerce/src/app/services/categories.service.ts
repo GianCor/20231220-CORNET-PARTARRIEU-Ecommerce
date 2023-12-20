@@ -8,9 +8,13 @@ import { Observable } from 'rxjs';
 export class CategoriesService {
   constructor(private http: HttpClient) { }
 
-  URL_API= 'https://api.escuelajs.co/api/v1/categoriess'
+  URL_API= 'https://api.escuelajs.co/api/v1/categories'
   
-  getCategories():Observable<any>{
+  getProductByCategory(id: any):Observable<any>{
+      return this.http.get(`${this.URL_API}/${id}/products`)
+  }
+
+  getCategories(){
     return this.http.get(this.URL_API)
   }
 }
