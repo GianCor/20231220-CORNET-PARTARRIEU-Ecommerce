@@ -15,4 +15,8 @@ export class ProductsService {
     console.log(this.http.get(this.URL_API))
     return this.http.get(this.URL_API)
   }
+
+  getSingleProduct(id:any){
+    return this.http.get(this.URL_API +'/'+ id);
+  }
 }
