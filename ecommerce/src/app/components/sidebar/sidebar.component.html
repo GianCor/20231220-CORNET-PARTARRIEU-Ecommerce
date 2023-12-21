@@ -1,0 +1,16 @@
+<ul class="navbar-nav list-group list-group-flush me-auto mb-2 mb-lg-0 d-none d-lg-block position-fixed ">
+    <li class="nav-item list-group-item">
+        <input type="text" placeholder="Título" [(ngModel)]="title">
+    </li>
+    <li class="nav-item list-group-item">
+        <input type="text" placeholder="Precio" [(ngModel)]="price">
+    </li>
+    <li class="nav-item list-group-item">
+        <input type='text' placeholder="min" [(ngModel)]="priceMin">
+    </li><li class="nav-item list-group-item">
+        <input type='text' placeholder="max" [(ngModel)]="priceMax">
+    </li>
+    <li class="nav-item list-group-item">
+        <button class="btn btn-primary " (click)="filter()">Filtrar</button>
+    </li>
+</ul>

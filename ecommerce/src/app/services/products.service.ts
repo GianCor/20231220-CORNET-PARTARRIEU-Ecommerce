@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,8 @@ export class ProductsService {
   index: number = 0;
 
   URL_API = 'https://api.escuelajs.co/api/v1/products';
+  URL_API_Filtered: any = this.URL_API;
+  filtro= '';
 
   getProducts(): Observable<any> {
     console.log(this.http.get(this.URL_API));
@@ -35,5 +38,21 @@ export class ProductsService {
     }
     localStorage.setItem('cart', JSON.stringify(this.arrCart));
     console.log(this.arrCart);
+  }
+
+  setFiltro(filtro: string){
+    this.filtro = filtro;
+  }
+  obtenerFiltro(){
+    return this.filtro;
+  }
+
+  setProductsFiltered(filter:string){
+    this.URL_API_Filtered = filter;
+    this.getProductsFiltered();
+  }
+
+  getProductsFiltered():Observable<any>{
+    return this.http.get(this.URL_API + '/?' + this.URL_API_Filtered);
   }
 }
