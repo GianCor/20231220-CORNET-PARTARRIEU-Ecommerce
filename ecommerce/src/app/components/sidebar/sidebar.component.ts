@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -6,9 +7,18 @@ import { ProductsService } from 'src/app/services/products.service';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit{
 
-  constructor(public productService: ProductsService){}
+  constructor(public productService: ProductsService, private route: ActivatedRoute){}
+
+  categoryID!: number;
+  ngOnInit(): void {    
+    this.route.paramMap.subscribe(params => {
+      this.categoryID = +params.get('category')!;
+      console.log(this.categoryID);
+      
+    });
+  }
 
   filterText: string = '';
   title: string = '';

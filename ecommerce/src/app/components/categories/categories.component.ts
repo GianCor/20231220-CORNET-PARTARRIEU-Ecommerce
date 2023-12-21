@@ -17,6 +17,8 @@ export class CategoriesComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.id = +params.get('category')!;
+      console.log(this);
+      
 
       this.categoryService.getProductByCategory(this.id).subscribe((e) => {
         this.arrProducts = e;

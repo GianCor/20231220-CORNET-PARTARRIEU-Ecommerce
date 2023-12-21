@@ -11,7 +11,7 @@ export class ProductsService {
 
   arrCart: any = [];
   index: number = 0;
-
+  
   URL_API = 'https://api.escuelajs.co/api/v1/products';
   URL_API_Filtered = new BehaviorSubject<string>('');
 
