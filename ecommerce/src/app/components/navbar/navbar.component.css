@@ -1,0 +1,14 @@
+.burbuja {
+    position: absolute;
+    top: -10%;
+    left: 70%;
+    background: red;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 2px;
+}
