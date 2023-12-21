@@ -11,7 +11,7 @@ export class ProductsService {
 
   arrCart: any = [];
   index: number = 0;
-  
+  categoryID = new BehaviorSubject<string>('');
   URL_API = 'https://api.escuelajs.co/api/v1/products';
   URL_API_Filtered = new BehaviorSubject<string>('');
 
@@ -47,7 +47,19 @@ export class ProductsService {
     return this.URL_API_Filtered.asObservable();
   }
 
+  setCategory(category: string) {
+    this.categoryID.next(category);
+  }
+
+  getCategory(): Observable<any> {
+    return this.categoryID.asObservable();
+  }
+
   getProductsFiltered(filter:string):Observable<any>{
     return this.http.get(this.URL_API + '/?' + filter);
+  }
+
+  restablecerFiltros(){
+    this.URL_API_Filtered.next('');
   }
 }

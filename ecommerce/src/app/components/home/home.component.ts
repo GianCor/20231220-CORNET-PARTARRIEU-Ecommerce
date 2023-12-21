@@ -16,18 +16,11 @@ export class HomeComponent implements OnInit{
 
   arrProducts: any = [];
   ngOnInit(): void {
-    /* this.route.paramMap.subscribe(params =>{
-      this.filter = params.get('filter')!;
-      this.productsService.getProductsFiltered(this.filter).subscribe((e)=>{
-        console.log(e)
-        this.arrProducts = e
-      })
-    }) */
-
     this.productsService.getProducts().subscribe((e)=>{
       console.log(e)
       this.arrProducts = e
     })
+    this.productsService.restablecerFiltros();
     this.productsService.getURL().subscribe((e)=>{
       this.filter = e;
       this.productsService.getProductsFiltered(this.filter).subscribe((e)=>{
