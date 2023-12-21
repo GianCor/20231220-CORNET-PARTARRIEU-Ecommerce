@@ -22,14 +22,14 @@
             </button>
         </div>
     </div>
-    <div class="col">
+    <div class="col d-flex justify-content-start align-items-start flex-column ">
         <h2>{{product.title}}</h2>
         <p>{{product.description}}</p>
         <p>{{product.price}}</p>
-        <div class="d-flex">
-          <button (click)="minus()">-</button>
-          <label>{{amount}}</label>
-          <button (click)="plus()">+</button>
+        <div class="d-flex align-items-center mb-3">
+          <button class="btn btn-outline-primary" (click)="minus()">-</button>
+          <label class="mx-2">{{amount}}</label>
+          <button class="btn btn-outline-primary" (click)="plus()">+</button>
         </div>
         <button class="btn btn-primary" (click)="addToCart(product)" routerLink="/cart">Comprar</button>
     </div>
