@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-cart',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
+  constructor(public productsServices: ProductsService, private router: Router) {}
   list: any = [];
   total: number = 0;
   ngOnInit(): void {
@@ -30,5 +33,21 @@ export class CartComponent implements OnInit {
     this.list.forEach((e: any) => {
       this.total += e.price * e.amount;
     });
+  }
+
+
+  flag = false;
+  comprar() {
+    if(this.total >0){
+      this.flag = true;
+      setTimeout(()=>{
+        this.flag=false
+        this.router.navigate(['/home/0']);
+      }, 2500)
+    }
+    localStorage.clear();
+    this.list = [];
+    this.calculateTotal();
+    this.productsServices.cantidad = 0;
   }
 }

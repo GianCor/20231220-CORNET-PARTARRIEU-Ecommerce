@@ -7,6 +7,7 @@ import { ProductsService } from 'src/app/services/products.service';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css'],
 })
+
 export class DetailsComponent implements OnInit {
   amount: number = 1;
 
@@ -26,6 +27,7 @@ export class DetailsComponent implements OnInit {
   addToCart(producto: any) {
     producto["amount"]=this.amount;
     this.productsService.postLocalStorage(producto);
+    this.productsService.cantidad += this.amount;
   }
   plus() {
     this.amount++;

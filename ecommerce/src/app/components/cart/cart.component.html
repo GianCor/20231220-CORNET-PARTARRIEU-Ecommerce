@@ -26,6 +26,10 @@
     <div class="col-4">
         <div>
             <h5>Total: {{total}}</h5>
+            <button class="btn btn-success" (click)="comprar()">Comprar</button>
+            <div *ngIf="flag" class="alert alert-success" role="alert">
+                Gracias por tu compra
+              </div>
         </div>
     </div>
 </div>

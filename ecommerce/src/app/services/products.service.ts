@@ -14,6 +14,7 @@ export class ProductsService {
   categoryID = new BehaviorSubject<string>('');
   URL_API = 'https://api.escuelajs.co/api/v1/products';
   URL_API_Filtered = new BehaviorSubject<string>('');
+  cantidad: number =0;
 
   getProducts(): Observable<any> {
     console.log(this.http.get(this.URL_API));

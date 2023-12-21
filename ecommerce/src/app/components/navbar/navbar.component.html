@@ -4,13 +4,13 @@
       <a class="navbar-brand" routerLink="">Navbar</a>
       <ul class="navbar-nav container-fluid ">
         <li class="nav-item" *ngFor="let category of categories">
-          <a class="nav-link active" aria-current="page" [routerLink]="['categories', category.id]">{{category.name}}</a>
+          <a class="nav-link active" aria-current="page" [routerLink]="['home', category.id]">{{category.name}}</a>
         </li>
       </ul>
     </div>
     <a routerLink="cart" class="nav-link d-flex position-relative ">
       <img width="40" height="40" src="https://img.icons8.com/ios-glyphs/30/shopping-cart--v1.png" alt="shopping-cart--v1"/>
-      <span class="burbuja">1</span>  
+      <input class="burbuja" [(ngModel)]="productsServices.cantidad">  
     </a>
   </div>
 </nav>

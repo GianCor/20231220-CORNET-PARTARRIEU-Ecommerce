@@ -24,6 +24,14 @@ export class SidebarComponent implements OnInit{
   priceMin: string = '';
   priceMax: string = '';
 
+  limpiarFiltro(){
+    this.filterText = '';
+    this.title= '';
+    this.price = '';
+    this.priceMin = '';
+    this.priceMax = '';
+  }
+
   filter(){
     this.title = this.title.trim().replace(/[' ']/g, "_");
     console.log(this.title);
@@ -33,9 +41,10 @@ export class SidebarComponent implements OnInit{
     if(this.priceMax === ''){
       this.priceMax = '9999999999'
     }
-    this.filterText = `title=${this.title}&price=${this.price}&price_min=${this.priceMin}&price_max=${this.priceMax}&categoryId=${this.categoryId}`;
+    this.filterText = `title=${this.title}&price=${this.price}&price_min=${this.priceMin}&price_max=${this.priceMax}&`;
     console.log(this.filterText);
     this.productService.setURL(this.filterText);
+    this.limpiarFiltro()
   }
 
 
