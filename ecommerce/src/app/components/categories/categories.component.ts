@@ -20,19 +20,13 @@ export class CategoriesComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('category')!;
       this.productsService.setCategory(this.id);
-            
-
-      this.categoryService.getProductByCategory(this.id).subscribe((e) => {
-        this.arrProducts = e;
-      });
+      
       this.productsService.getURL().subscribe((e)=>{
         this.filter = e;
         this.productsService.getProductsFiltered(this.filter).subscribe((e)=>{
-          console.log(e)
           this.arrProducts = e
         })
       })
-      
     });
   }
 }
