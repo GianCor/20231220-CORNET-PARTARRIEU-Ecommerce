@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Title } from '@angular/platform-browser';
 
 @Injectable({
@@ -13,8 +13,7 @@ export class ProductsService {
   index: number = 0;
 
   URL_API = 'https://api.escuelajs.co/api/v1/products';
-  URL_API_Filtered: any = this.URL_API;
-  filtro= '';
+  URL_API_Filtered = new BehaviorSubject<string>('');
 
   getProducts(): Observable<any> {
     console.log(this.http.get(this.URL_API));
@@ -40,19 +39,15 @@ export class ProductsService {
     console.log(this.arrCart);
   }
 
-  setFiltro(filtro: string){
-    this.filtro = filtro;
-  }
-  obtenerFiltro(){
-    return this.filtro;
+  setURL(filter:string){
+    this.URL_API_Filtered.next(filter);
   }
 
-  setProductsFiltered(filter:string){
-    this.URL_API_Filtered = filter;
-    this.getProductsFiltered();
+  getURL():Observable<string>{
+    return this.URL_API_Filtered.asObservable();
   }
 
-  getProductsFiltered():Observable<any>{
-    return this.http.get(this.URL_API + '/?' + this.URL_API_Filtered);
+  getProductsFiltered(filter:string):Observable<any>{
+    return this.http.get(this.URL_API + '/?' + filter);
   }
 }

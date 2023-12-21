@@ -27,7 +27,7 @@ export class SidebarComponent {
     }
     this.filterText = `title=${this.title}&price=${this.price}&price_min=${this.priceMin}&price_max=${this.priceMax}`;
 
-    this.productService.setFiltro(this.filterText);
+    this.productService.setURL(this.filterText);
   }
 
 
